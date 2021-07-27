@@ -1,4 +1,6 @@
 import {formatCurrencyString, useShoppingCart} from 'use-shopping-cart'
+import DangerButton from 'components/buttons/DangerButton'
+import PrimaryButton from 'components/buttons/PrimaryButton'
 
 export default function CardDescription({product}: any) {
   const {addItem, removeItem} = useShoppingCart()
@@ -26,16 +28,8 @@ export default function CardDescription({product}: any) {
         </p>
       </div>
       <div className="col-span-3 row-span-1">
-        <button type="button"
-                onClick={() => addItem(product)}
-                className="bg-blue-500 text-white px-3 py-2 rounded font-medium mx-3 hover:bg-blue-600 transition duration-200 each-in-out">
-          カートに入れる
-        </button>
-        <button type="button"
-                onClick={() => removeItem(product.sku)}
-                className="bg-red-500 text-white px-6 py-2 rounded font-medium mx-3 hover:bg-red-600 transition duration-200 each-in-out">
-          削除
-        </button>
+        <PrimaryButton text="カートに入れる" onClickFunction={() => addItem(product)} />
+        <DangerButton text="削除" onClickFunction={() => removeItem(product.sku)} />
       </div>
     </>
   )
