@@ -1,8 +1,7 @@
 import Head from 'next/head'
-import {Grid} from '@material-ui/core'
-import Product from '../components/product'
-import {Fruits} from "../src/Dataset";
-import Layout from "../components/layout";
+import Card from 'components/card/Card'
+import {Fruits} from "src/Dataset";
+import Layout from "components/layout";
 
 export default function Home() {
   return (
@@ -14,13 +13,13 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico"/>
         </Head>
 
-        <Grid container spacing={2}>
+        <div className="flex flex-row flex-wrap">
           {
             Fruits.map((fruit) => {
-              return (<Product fruit={fruit} key={fruit.id}/>)
+              return (<Card product={fruit} key={fruit.id}/>)
             })
           }
-        </Grid>
+        </div>
       </div>
     </Layout>
   )

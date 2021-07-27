@@ -1,58 +1,30 @@
 import React from "react";
-import Link from "next/link";
-import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
-import {
-  AppBar,
-  Toolbar,
-  Button,
-  IconButton,
-} from "@material-ui/core"
+import Link from "next/dist/client/link";
 import ShoppingCart from "./ShoppingCart";
-
-import MenuIcon from '@material-ui/icons/Menu'
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      flexGrow: 1,
-    },
-    cart: {
-      marginLeft: "auto"
-    },
-    child: {
-      paddingTop: "20px"
-    },
-  }),
-);
-
 export default function Layout({children}: LayoutProps) {
-  const classes = useStyles();
   return (
     <div>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon/>
-          </IconButton>
-          <Link href={"/"}>
-            <Button color="inherit">Mock Shop</Button>
-          </Link>
-          <div className={classes.cart}>
+      <header className="text-gray-100 bg-gray-900">
+        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <Link href="/">
+          <a
+            className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-start mb-4 md:mb-0">
+            <span className="ml-3 text-xl">Mock Shop</span>
+          </a>
+              </Link>
+          <nav className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+          </nav>
+          <div className="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
             <ShoppingCart/>
           </div>
-        </Toolbar>
-      </AppBar>
-      <div className={classes.child}>
+        </div>
+      </header>
+      <div className="pt-0.5">
         {children}
       </div>
     </div>
