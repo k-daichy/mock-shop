@@ -1,7 +1,6 @@
 import React, { useState, useEffect, } from "react";
 import Head from "next/head";
 import Layout from "components/layout";
-import PrimaryButton from "components/buttons/PrimaryButton";
 import DangerButton from "components/buttons/DangerButton";
 import { fetchPostJSON } from '../../utils/api-helpers'
 import { useShoppingCart } from 'use-shopping-cart'
