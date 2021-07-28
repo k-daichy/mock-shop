@@ -22,13 +22,13 @@ export default function Cart() {
     const response = await fetchPostJSON(
       '/api/checkout_sessions/cart',
       cartDetails
-      )
-      
-      if (response.statusCode === 500) {
-        console.error(response.message)
-        return
-      }
-      
+    )
+
+    if (response.statusCode === 500) {
+      console.error(response.message)
+      return
+    }
+
     redirectToCheckout({ sessionId: response.id })
   }
 
@@ -41,7 +41,7 @@ export default function Cart() {
       </Head>
 
       <div className="flex flex-row flex-wrap">
-        <div className="p-5 w-5/12 m-auto rounded border-solid border-2">
+        <div className="p-5 w-auto m-auto rounded border-solid border-2">
           <h2>カート</h2>
 
           <div className="flex flex-row justify-between">
@@ -57,7 +57,19 @@ export default function Cart() {
           <form className="flex flex-row justify-between" onSubmit={checkout}>
             <button type="submit"
               disabled={cartEmpty || loading}
-              className="ml-auto bg-blue-500 text-white px-6 py-2 rounded font-medium mx-3 hover:bg-blue-600 transition duration-200 each-in-out">
+              className={`
+              text-white
+              ml-auto
+              mx-3
+              px-6
+              py-2
+              rounded
+              font-medium
+              transition
+              duration-200
+              each-in-out
+              ${cartEmpty || loading ? 'bg-blue-300' : 'bg-blue-500 hover:bg-blue-600'}
+              `}>
               購入
             </button>
             <DangerButton text="空にする" onClickFunction={clearCart} />
